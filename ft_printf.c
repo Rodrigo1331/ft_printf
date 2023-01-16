@@ -6,51 +6,66 @@
 /*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 11:43:23 by rcruz-an          #+#    #+#             */
-/*   Updated: 2023/01/12 16:41:12 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:13:59 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	variables_printf( , int i) // default i = 1
+int	variables_printf(const char *s, int i, va_list arp)
 {
-	if (%)
-		ft_putchar_fd('%', 1);
-	if else (c)
-
-	if else (s)
-
-	if else (p)
-
-	if else (d)
-
-	if else (i)
-
-	if else (u)
-
-	if else (x)
-
-	if else (X)
-
+	if (s[i + 1] == %)
+		return (ft_putchar_fd('%', 1));
+	if else (s[i + 1] == 'c')
+		return (ft_putchar_fd(va_arg(arp, int), 1));
+	if else (s[i + 1] == 's')
+		return (ft_putstr_fd (va_arg(arp, char *), 1));
+	if else (s[i + 1] == 'p')
+		return ();
+	if else (s[i + 1] == 'd')
+		return ();
+	if else (s[i + 1] == 'i')
+		return ();
+	if else (s[i + 1] == 'u')
+		return ();
+	if else (s[i + 1] == 'x' || s[i + 1] == 'X')
+		return ();
 	else
-		i = 0;
-	return (i);
+		return (0);
 }
 
-int ft_printf(const char *, ...)
+int ft_printf(const char *s, ...)
 {
+	va_list arg_p;
 	int i;
 
+	va_start(arg_p, s);
 	i = 1;
 
 
-}
 
+	va_end (arg_p);
+	return ();
+}
 
 /* int main ()
 {
 	
 	
-	printf ("%%\n");
+	printf ("%c\n", c);
 	return (0);
 } */
+
+/*
+while (...)
+{
+	ft_strchr can be used or not
+
+	
+		if (s[i] = %)
+			variable_printf
+		else
+			ft_putchar_fd
+		i++;
+}
+*/
