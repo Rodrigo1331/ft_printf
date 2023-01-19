@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 20:28:03 by rcruz-an          #+#    #+#             */
-/*   Updated: 2023/01/19 15:37:47 by rcruz-an         ###   ########.fr       */
+/*   Created: 2022/11/16 21:11:44 by rcruz-an          #+#    #+#             */
+/*   Updated: 2023/01/19 16:51:55 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putstr(char *s)
 {
-	int		i;
-	char	*str;
+	int	i;
 
 	i = 0;
-	str = (char *)s;
-	while (str[i])
+	if (!s)
+		return ;
+	while (s[i])
 	{
-		if (str[i] == c)
-			return (&str[i]);
+		write(1, &s[i], 1);
 		i++;
 	}
-	if (str[i] == c)
-		return (&str[i]);
-	return (0);
+	return (i);
 }

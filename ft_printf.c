@@ -6,7 +6,7 @@
 /*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 11:43:23 by rcruz-an          #+#    #+#             */
-/*   Updated: 2023/01/19 14:42:37 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:56:19 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,17 @@
 int	variables_printf(const char *s, int i, va_list arp)
 {
 	if (s[i] == %)
-		return (ft_putchar_fd('%', 1));
+		return (ft_putchar ('%'));
 	if else (s[i] == 'c')
-		return (ft_putchar_fd(va_arg(arp, int), 1));
+		return (ft_putchar (va_arg(arp, int)));
 	if else (s[i] == 's')
-		return (ft_putstr_fd (va_arg(arp, char *), 1));
+		return (ft_putstr (va_arg(arp, char *)));
 	if else (s[i] == 'p')
 		return (); //I don't know yet
-	if else (s[i] == 'i')
-		return (); //libft
-	if else (s[i] == 'd')
-		return (); //libft
+	if else (s[i] == 'i' || s[i] == 'd')
+		return (ft_putnbr (va_arg(arp, int)));
 	if else (s[i] == 'u')
-		return (); //libft (probably)
+		return (ft_putnbr_u (va_arg(arp, unsigned int)));
 	if else (s[i] == 'x')
 		return (); //libft (probably)
 	if else (s[i] == 'X')
@@ -53,18 +51,18 @@ int ft_printf(const char *s, ...)
 			r += variable_printf(*s, i, arg_p);
 		}
 		else
-			r += ft_putchar_fd(s[i], 1);
+			r += ft_putchar(s[i]);
 		i++;
 	}
 	va_end (arg_p);
 	return (r);
 }
 
-int main ()
+/* int main ()
 {
 	int i = 23;
 
 	printf("%d\n", printf("potato\n"));
 	printf("%d\n", ft_printf("potato\n", 10));
 	return (0);
-}
+} */
