@@ -6,63 +6,80 @@
 /*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 11:43:23 by rcruz-an          #+#    #+#             */
-/*   Updated: 2023/01/19 16:56:19 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:25:22 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	variables_printf(const char *s, int i, va_list arp)
+int	variables_printf(const char *s, int i, va_list arg_p)
 {
 	if (s[i] == %)
-		return (ft_putchar ('%'));
+		return (ft_putchar('%'));
 	if else (s[i] == 'c')
-		return (ft_putchar (va_arg(arp, int)));
+		return (ft_putchar(va_arg(arg_p, int)));
 	if else (s[i] == 's')
-		return (ft_putstr (va_arg(arp, char *)));
-	if else (s[i] == 'p')
-		return (); //I don't know yet
+		return (ft_putstr(va_arg(arg_p, char *)));
+	/* if else (s[i] == 'p')
+		return (); */
 	if else (s[i] == 'i' || s[i] == 'd')
-		return (ft_putnbr (va_arg(arp, int)));
+		return (ft_putnbr(va_arg(arg_p, int)));
 	if else (s[i] == 'u')
-		return (ft_putnbr_u (va_arg(arp, unsigned int)));
-	if else (s[i] == 'x')
-		return (); //libft (probably)
-	if else (s[i] == 'X')
-		return (); // x but uppercase formate
+		return (ft_putnbr_u(va_arg(arg_p, unsigned int)));
+	if else (s[i] == 'x' || s[i] == 'X')
+		return (ft_hex_base(va_arg(arg_p, unsigned int), s[i]));
 	else
 		return (0);
 }
 
-int ft_printf(const char *s, ...)
+char	*ft_strchr(const char *s, int c)
 {
-	va_list arg_p;
-	int i;
-	int r;
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *)s;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (&str[i]);
+		i++;
+	}
+	if (str[i] == c)
+		return (&str[i]);
+	return (0);
+}
+
+int	ft_printf(const char *s, ...)
+{
+	va_list	arg_p;
+	int		i;
+	int		l;
 
 	i = 1;
-	r = 0;
+	l = 0;
 	va_start(arg_p, s);
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		if (s[i] == '%' && ft_strchr("cspdiuxX%", str[i + 1]))
+		if (s[i] == '%' && ft_strchr("cspdiuxX%", s[i + 1]))
 		{
 			i++;
-			r += variable_printf(*s, i, arg_p);
+			l += variables_printf(s, i, arg_p);
 		}
 		else
-			r += ft_putchar(s[i]);
+			l += ft_putchar(s[i]);
 		i++;
 	}
 	va_end (arg_p);
-	return (r);
+	return (l);
 }
 
-/* int main ()
-{
-	int i = 23;
+/* int main (){
+	//int i = 23;
 
 	printf("%d\n", printf("potato\n"));
-	printf("%d\n", ft_printf("potato\n", 10));
+	printf("%d\n", ft_printf("potato\n"));
+
+	
 	return (0);
 } */

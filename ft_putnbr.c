@@ -6,7 +6,7 @@
 /*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:11:44 by rcruz-an          #+#    #+#             */
-/*   Updated: 2023/01/19 16:24:47 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2023/01/23 12:05:56 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_putnbr(int n)
 	long long int	n2;
 	int				l;
 
-	len = 0;
+	l = 0;
 	n2 = n;
 	if (n2 < 0)
 	{
@@ -31,7 +31,7 @@ int	ft_putnbr(int n)
 		l += ft_putnbr(n2 % 10);
 	}
 	if (n2 <= 9)
-		l += ft_putchar(n2 + '0')
+		l += ft_putchar(n2 + '0');
 	return (l);
 }
 
@@ -40,7 +40,7 @@ int	ft_putnbr_u(unsigned int n)
 	unsigned int	n2;
 	int				l;
 
-	len = 0;
+	l = 0;
 	n2 = n;
 	if (n2 >= 10)
 	{
@@ -48,6 +48,6 @@ int	ft_putnbr_u(unsigned int n)
 		l += ft_putnbr_u(n2 % 10);
 	}
 	if (n2 <= 9)
-		l += ft_putchar(n2 + '0')
+		l += ft_putchar(n2 + '0');
 	return (l);
 }
