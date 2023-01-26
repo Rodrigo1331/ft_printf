@@ -6,28 +6,30 @@
 /*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 11:43:23 by rcruz-an          #+#    #+#             */
-/*   Updated: 2023/01/23 16:25:22 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:36:47 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	variables_printf(const char *s, int i, va_list arg_p)
 {
-	if (s[i] == %)
+	if (s[i] == '%')
 		return (ft_putchar('%'));
-	if else (s[i] == 'c')
+	else if (s[i] == 'c')
 		return (ft_putchar(va_arg(arg_p, int)));
-	if else (s[i] == 's')
+	else if (s[i] == 's')
 		return (ft_putstr(va_arg(arg_p, char *)));
-	/* if else (s[i] == 'p')
-		return (); */
-	if else (s[i] == 'i' || s[i] == 'd')
+	else if (s[i] == 'p')
+		return (ft_putpointer(va_arg(arg_p, unsigned long long)));
+	else if (s[i] == 'i' || s[i] == 'd')
 		return (ft_putnbr(va_arg(arg_p, int)));
-	if else (s[i] == 'u')
+	else if (s[i] == 'u')
 		return (ft_putnbr_u(va_arg(arg_p, unsigned int)));
-	if else (s[i] == 'x' || s[i] == 'X')
-		return (ft_hex_base(va_arg(arg_p, unsigned int), s[i]));
+	else if (s[i] == 'x')
+		return (ft_hex_base(va_arg(arg_p, unsigned int)));
+	else if (s[i] == 'X')
+		return (ft_hex_base_uppercase(va_arg(arg_p, unsigned int)));
 	else
 		return (0);
 }
@@ -56,9 +58,9 @@ int	ft_printf(const char *s, ...)
 	int		i;
 	int		l;
 
-	i = 1;
-	l = 0;
 	va_start(arg_p, s);
+	i = 0;
+	l = 0;
 	while (s[i])
 	{
 		if (s[i] == '%' && ft_strchr("cspdiuxX%", s[i + 1]))
@@ -75,10 +77,10 @@ int	ft_printf(const char *s, ...)
 }
 
 /* int main (){
-	//int i = 23;
+	int i = 15;
 
-	printf("%d\n", printf("potato\n"));
-	printf("%d\n", ft_printf("potato\n"));
+	printf("%d\n\n", printf("%d\n", i));
+	printf("%d\n", ft_printf("%d\n", i));
 
 	
 	return (0);

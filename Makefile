@@ -6,13 +6,13 @@
 #    By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/12 11:45:47 by rcruz-an          #+#    #+#              #
-#    Updated: 2023/01/23 16:10:52 by rcruz-an         ###   ########.fr        #
+#    Updated: 2023/01/26 15:22:36 by rcruz-an         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Werror -Wextra -Wall
-NAME = libftprintf.a
+NAME = ft_printf.a
 SCRIPTS = ft_printf.c ft_putchar.c ft_putnbr_xX.c ft_putnbr.c ft_putpointer.c ft_putstr.c
 
 OBJS = $(SCRIPTS:.c=.o)

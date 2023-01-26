@@ -6,11 +6,11 @@
 /*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:11:44 by rcruz-an          #+#    #+#             */
-/*   Updated: 2023/01/23 12:05:56 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:13:31 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putnbr(int n)
 {
